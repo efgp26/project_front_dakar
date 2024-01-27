@@ -1,0 +1,142 @@
+
+
+<nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div class="px-3 py-3 lg:px-5 lg:pl-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center justify-start rtl:justify-end">
+          <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+              <span class="sr-only">Open sidebar</span>
+              <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                 <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+              </svg>
+           </button>
+          <a href="https://flowbite.com" class="flex ms-2 md:me-24">
+            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
+            <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Flowbite</span>
+          </a>
+        </div>
+        <div class="flex items-center">
+            <div class="flex items-center ms-3">
+              <div>
+                <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                  <span class="sr-only">Open user menu</span>
+                  <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                </button>
+              </div>
+              <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
+                <div class="px-4 py-3" role="none">
+                  <p class="text-sm text-gray-900 dark:text-white" role="none">
+                    Neil Sims
+                  </p>
+                  <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                    Hola mundo
+                  </p>
+                </div>
+                <ul class="py-1" role="none">
+                  <li>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+  
+  <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+         <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.5 12C10.9853 12 13 9.98528 13 7.5C13 5.01472 10.9853 3 8.5 3C6.01472 3 4 5.01472 4 7.5C4 9.98528 6.01472 12 8.5 12Z" fill="currentColor"/>
+                  <path d="M10 13H7C5.67441 13.0016 4.40356 13.5289 3.46622 14.4662C2.52888 15.4036 2.00159 16.6744 2 18V20C2 20.2652 2.10536 20.5196 2.29289 20.7071C2.48043 20.8946 2.73478 21 3 21H14C14.2652 21 14.5196 20.8946 14.7071 20.7071C14.8946 20.5196 15 20.2652 15 20V18C14.9984 16.6744 14.4711 15.4036 13.5338 14.4662C12.5964 13.5289 11.3256 13.0016 10 13Z" fill="currentColor"/>
+                  <path d="M21 10H19V8C19 7.73478 18.8946 7.48043 18.7071 7.29289C18.5196 7.10536 18.2652 7 18 7C17.7348 7 17.4804 7.10536 17.2929 7.29289C17.1054 7.48043 17 7.73478 17 8V10H15C14.7348 10 14.4804 10.1054 14.2929 10.2929C14.1054 10.4804 14 10.7348 14 11C14 11.2652 14.1054 11.5196 14.2929 11.7071C14.4804 11.8946 14.7348 12 15 12H17V14C17 14.2652 17.1054 14.5196 17.2929 14.7071C17.4804 14.8946 17.7348 15 18 15C18.2652 15 18.5196 14.8946 18.7071 14.7071C18.8946 14.5196 19 14.2652 19 14V12H21C21.2652 12 21.5196 11.8946 21.7071 11.7071C21.8946 11.5196 22 11.2652 22 11C22 10.7348 21.8946 10.4804 21.7071 10.2929C21.5196 10.1054 21.2652 10 21 10Z" fill="currentColor"/>
+                  </svg>
+                  <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Usuarios</span>
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+            </button>
+            <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                  <li>
+                     <a [routerLink]="['/create-user']" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Creacion de usuarios</a>
+                  </li>
+                  <li>
+                     <a [routerLink]="['/list-user']" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Listado de usuarios</a>
+                  </li>
+                  <li>
+                     <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a>
+                  </li>
+            </ul>
+         </li>
+           <li>
+              <a [routerLink]="['/bike']" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.16407 5.80495L4.68907 6.18495L2.32707 8.54595C2.18094 8.69225 2.0784 8.87633 2.03095 9.07759C1.9835 9.27885 1.993 9.48935 2.05839 9.68551C2.12378 9.88168 2.24247 10.0558 2.40119 10.1883C2.55991 10.3209 2.75239 10.4066 2.95707 10.436L6.15707 10.811L9.16407 5.80495Z" fill="currentColor"/>
+                  <path d="M13.0921 17.9L13.5641 21.04C13.5934 21.2446 13.6792 21.4371 13.8117 21.5958C13.9442 21.7545 14.1183 21.8732 14.3145 21.9386C14.5107 22.004 14.7212 22.0135 14.9224 21.9661C15.1237 21.9186 15.3078 21.8161 15.4541 21.67L17.8151 19.308L18.1951 14.833L13.0921 17.9Z" fill="currentColor"/>
+                  <path d="M21.7091 3.61695C21.6537 3.28536 21.4961 2.97934 21.2584 2.74162C21.0207 2.5039 20.7147 2.34635 20.3831 2.29095C18.4701 1.96095 14.5721 1.55495 12.8271 3.30095C10.8471 5.28095 6.65507 12.792 5.35007 15.17C5.23417 15.3803 5.19029 15.6228 5.22514 15.8604C5.25999 16.0981 5.37165 16.3177 5.54307 16.486L6.52907 17.471L7.51407 18.457C7.68228 18.6284 7.90197 18.74 8.1396 18.7749C8.37722 18.8097 8.61972 18.7659 8.83007 18.65C11.2081 17.35 18.7191 13.15 20.6991 11.173C22.4451 9.42795 22.0391 5.52995 21.7091 3.61695ZM17.8361 9.88495C17.4681 10.2529 16.9993 10.5034 16.489 10.6049C15.9786 10.7064 15.4496 10.6543 14.9689 10.4552C14.4881 10.256 14.0772 9.91879 13.7882 9.48613C13.4991 9.05347 13.3448 8.5448 13.3448 8.02445C13.3448 7.5041 13.4991 6.99544 13.7882 6.56278C14.0772 6.13012 14.4881 5.7929 14.9689 5.59375C15.4496 5.39461 15.9786 5.34249 16.489 5.44398C16.9993 5.54548 17.4681 5.79603 17.8361 6.16395C18.0805 6.4082 18.2745 6.69823 18.4068 7.01747C18.5391 7.3367 18.6072 7.67888 18.6072 8.02445C18.6072 8.37002 18.5391 8.7122 18.4068 9.03144C18.2745 9.35067 18.0805 9.6407 17.8361 9.88495Z" fill="currentColor"/>
+                  </svg>
+                  
+                 <span class="flex-1 ms-3 whitespace-nowrap">Agregar Motocicleta</span>                 
+              </a>
+           </li>
+           <li>
+              <a href="service" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 9.5H19.577L19.125 8.41L19.425 8.11C19.7062 7.82871 19.8642 7.44725 19.8642 7.0495C19.8642 6.65175 19.7062 6.27029 19.425 5.989L18.01 4.575C17.7287 4.29379 17.3472 4.13582 16.9495 4.13582C16.5518 4.13582 16.1703 4.29379 15.889 4.575L15.589 4.875L14.5 4.423V4C14.5 3.60218 14.342 3.22064 14.0607 2.93934C13.7794 2.65804 13.3978 2.5 13 2.5H11C10.6022 2.5 10.2206 2.65804 9.93934 2.93934C9.65804 3.22064 9.5 3.60218 9.5 4V4.423L8.41 4.875L8.11 4.575C7.82871 4.29379 7.44725 4.13582 7.0495 4.13582C6.65175 4.13582 6.27029 4.29379 5.989 4.575L4.576 5.99C4.29479 6.27129 4.13682 6.65275 4.13682 7.0505C4.13682 7.44825 4.29479 7.82971 4.576 8.111L4.876 8.411L4.423 9.5H4C3.60218 9.5 3.22064 9.65804 2.93934 9.93934C2.65804 10.2206 2.5 10.6022 2.5 11V13C2.5 13.3978 2.65804 13.7794 2.93934 14.0607C3.22064 14.342 3.60218 14.5 4 14.5H4.423L4.875 15.59L4.575 15.89C4.29379 16.1713 4.13582 16.5528 4.13582 16.9505C4.13582 17.3482 4.29379 17.7297 4.575 18.011L5.99 19.424C6.27129 19.7052 6.65275 19.8632 7.0505 19.8632C7.44825 19.8632 7.82971 19.7052 8.111 19.424L8.411 19.124L9.501 19.576V20C9.501 20.3977 9.6589 20.779 9.93999 21.0603C10.2211 21.3416 10.6023 21.4997 11 21.5H13C13.3978 21.5 13.7794 21.342 14.0607 21.0607C14.342 20.7794 14.5 20.3978 14.5 20V19.577L15.59 19.125L15.89 19.425C16.1713 19.7062 16.5528 19.8642 16.9505 19.8642C17.3482 19.8642 17.7297 19.7062 18.011 19.425L19.426 18.011C19.7072 17.7297 19.8652 17.3482 19.8652 16.9505C19.8652 16.5528 19.7072 16.1713 19.426 15.89L19.126 15.59L19.578 14.5H20C20.3978 14.5 20.7794 14.342 21.0607 14.0607C21.342 13.7794 21.5 13.3978 21.5 13V11C21.5 10.6022 21.342 10.2206 21.0607 9.93934C20.7794 9.65804 20.3978 9.5 20 9.5ZM12 15.5C11.3078 15.5 10.6311 15.2947 10.0555 14.9101C9.47993 14.5256 9.03133 13.9789 8.76642 13.3394C8.50151 12.6999 8.4322 11.9961 8.56725 11.3172C8.7023 10.6383 9.03564 10.0146 9.52513 9.52513C10.0146 9.03564 10.6383 8.7023 11.3172 8.56725C11.9961 8.4322 12.6999 8.50151 13.3394 8.76642C13.9789 9.03133 14.5256 9.47993 14.9101 10.0555C15.2947 10.6311 15.5 11.3078 15.5 12C15.5 12.9283 15.1313 13.8185 14.4749 14.4749C13.8185 15.1313 12.9283 15.5 12 15.5Z" fill="currentColor"/>
+                  </svg>
+                  
+                 <span class="flex-1 ms-3 whitespace-nowrap">Servicio</span>                 
+              </a>
+           </li>
+           <li>
+              <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                    <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
+                 </svg>
+                 <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+              </a>
+           </li>
+           <li>
+              <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                    <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
+                 </svg>
+                 <span class="flex-1 ms-3 whitespace-nowrap">Products</span>
+              </a>
+           </li>
+           <li>
+              <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
+                 </svg>
+                 <span class="flex-1 ms-3 whitespace-nowrap">Sign In</span>
+              </a>
+           </li>
+           <li>
+              <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
+                    <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"/>
+                    <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z"/>
+                 </svg>
+                 <span class="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
+              </a>
+           </li>
+        </ul>
+     </div>
+  </aside>
+  
+  
+  

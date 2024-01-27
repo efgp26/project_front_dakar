@@ -1,0 +1,89 @@
+<app-sidebar></app-sidebar>
+<div class="p-4 sm:ml-64">
+    <div class="p-4 h-auto border-2 border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 mt-14">
+        <div class="m-6">
+            <h1 class="text-center italic text-amber-700 text-5xl m-2 font-bold">Creacion de Motocicleta</h1>
+        </div>
+        <form [formGroup]="dataBike">
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                <div>
+                    <label for="licensePlate"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Placa
+                    </label>
+                    <input type="text" id="licensePlate"
+                        formControlName="licensePlate"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="John" required>
+                </div>
+                <div>
+                    <label for="brand"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Marca
+                    </label>
+                    <input type="text" id="brand"
+                    formControlName="brand"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Doe" required>
+                </div>
+                <div>
+                    <label for="reference"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Referencia
+                    </label>
+                    <input type="text" id="reference"
+                    formControlName="reference"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Doe" required>
+                </div>
+                <div>
+                    <label for="dateModel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Modelo
+                    </label>
+
+                    <input type="text" id="dateModel"
+                    formControlName="dateModel"
+                        class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="john.doe@company.com" required>
+                </div>
+                <div>
+                    <label for="displacement" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Cilindraje
+                    </label>
+
+                    <input type="text" id="displacement"
+                    formControlName="displacement"
+                        class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="john.doe@company.com" required>
+                </div>
+                <div>
+                    <label for="mileage" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Kilometraje
+                    </label>
+
+                    <input type="text" id="mileage"
+                    formControlName="mileage"
+                        class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="john.doe@company.com" required>
+                </div>
+            </div>
+            <div class="mb-6">
+                <label for="user" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Seleccione el  usuario
+                </label>
+                <select id="user"
+                formControlName="user"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    @for (item of listUsers; track item.id) {
+                        <option value="{{item.id}}">{{ item.name +" "+ item.lastName}}</option>
+                    }
+                </select>
+            </div>
+            
+            <button type="submit"
+                class="text-white bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800 "
+                (click)="createBike()"
+                >Guardar</button>
+        </form>
+    </div>
+</div>

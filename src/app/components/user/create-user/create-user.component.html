@@ -1,0 +1,116 @@
+
+<app-sidebar></app-sidebar>
+<div class="p-4 sm:ml-64 overflow-auto">
+    <div class="p-4 h-auto border-2 border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 mt-14">
+        <div class="m-6">
+            <h1 class="text-center italic text-amber-700 text-5xl m-2 font-bold">Creacion de Usuarios</h1>
+        </div>
+        <form [formGroup]="dataUser">
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                <div>
+                    <label for="first_name"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                    <input type="text" id="first_name"
+                        formControlName="name"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="John" required>
+                </div>
+                <div>
+                    <label for="last_name"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
+                    <input type="text" id="last_name"
+                    formControlName="lastName"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Doe" required>
+                </div>
+                <div>
+                    <label for="phone-input"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Celular</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 19 18">
+                                <path
+                                    d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="phone-input" aria-describedby="helper-text-explanation"
+                        formControlName="numberPhone"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo
+                        Electronico</label>
+
+                    <input type="email" id="email"
+                    formControlName="email"
+                        class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="john.doe@company.com" required>
+                </div>
+            </div>
+            <div class="mb-6">
+                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
+                    el tipo de usuario</label>
+                <select id="countries"
+                formControlName="roles"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="MECHANIC">Mecanico</option>
+                    <option value="USER">Cliente</option>
+                </select>
+            </div>
+
+          <!--  @if (false) {
+
+                <label for="fechaIngreso" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de Ingreso</label>
+            <div class="relative max-w-sm mb-6">
+                
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                    </svg>
+                </div>
+                <input datepicker datepicker-autohide type="text" id="fechaIngreso"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Select date">
+            </div>
+
+
+            }
+
+            <div class="mb-6">
+                <label for="password"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
+                <input type="password" id="password"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="•••••••••" required>
+            </div>
+            <div class="mb-6">
+                <label for="confirm_password"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmar Contraseña</label>
+                <input type="password" id="confirm_password"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="•••••••••" required>
+            </div>
+-->
+
+            <div class="flex items-start mb-6">
+                <div class="flex items-center h-5">
+                    <input id="remember" type="checkbox" value=""
+                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                        required>
+                </div>
+                <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the
+                    <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and
+                        conditions</a>.</label>
+            </div>
+            <button type="submit"
+                class="text-white bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800 "
+                (click)="createUser()"
+                >Guardar</button>
+        </form>
+    </div>
+</div>
