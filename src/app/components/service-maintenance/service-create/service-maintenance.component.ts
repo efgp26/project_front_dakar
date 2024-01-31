@@ -54,7 +54,7 @@ export class ServiceMaintenanceComponent implements OnInit {
   listAllBikes() {
     this.apiListAllBike.GetListBikes().subscribe((data) => {
       console.log(data.status);
-      let list = data as unknown as [];
+      let list = data.data as unknown as [];
       this.listBikes = list;
     });
   }
@@ -64,7 +64,7 @@ export class ServiceMaintenanceComponent implements OnInit {
       .GetListUserByRol('MECHANIC')
       .subscribe((data) => {
         console.log(data.message);
-        let list = data as unknown as [];
+        let list = data.data as unknown as [];
         this.mListUser = list;
       });
   }

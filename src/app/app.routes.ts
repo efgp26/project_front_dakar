@@ -6,6 +6,7 @@ import { ServiceMaintenanceComponent } from './components/service-maintenance/se
 import { HomeComponent } from './ux/home/home.component';
 import { ListUserComponent } from './components/user/list-user/list-user.component';
 import { DetailUserComponent } from './components/user/detail-user/detail-user.component';
+import { DetailBikeComponent } from './components/bike/detail-bike/detail-bike.component';
 
 export const routes: Routes = [
     { path: 'create-user', component: CreateUserComponent},
@@ -15,5 +16,6 @@ export const routes: Routes = [
     { path: 'home', component: HomeComponent},
     { path: 'list-user', component: ListUserComponent},
     { path: 'detail-user/:id', component: DetailUserComponent},
+    { path: 'detail-bike/:id', component: DetailBikeComponent},
     
 ];

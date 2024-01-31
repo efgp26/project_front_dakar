@@ -19,6 +19,7 @@
             >Nombre</label
           >
           <input
+          [readOnly]="enabledName"
             type="text"
             id="first_name"
             formControlName="name"
@@ -26,7 +27,8 @@
             placeholder="John"
             required
           />
-          <button type="submit" class="absolute top-7 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+          
+          <button (click)="toggleEnbledName()" type="submit" class="absolute top-7 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.3 4.8 2.9 2.9M7 7H4a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h11c.6 0 1-.4 1-1v-4.5m2.4-10a2 2 0 0 1 0 3l-6.8 6.8L8 14l.7-3.6 6.9-6.8a2 2 0 0 1 2.8 0Z"/>
               </svg>
@@ -39,6 +41,7 @@
             >Apellido</label
           >
           <input
+          [readOnly]="enabledLastname"
             type="text"
             id="last_name"
             formControlName="lastName"
@@ -46,7 +49,7 @@
             placeholder="Doe"
             required
           />
-          <button type="submit" class="absolute top-7 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+          <button (click)="toggleEnabledLastname()" type="submit" class="absolute top-7 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.3 4.8 2.9 2.9M7 7H4a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h11c.6 0 1-.4 1-1v-4.5m2.4-10a2 2 0 0 1 0 3l-6.8 6.8L8 14l.7-3.6 6.9-6.8a2 2 0 0 1 2.8 0Z"/>
               </svg>
@@ -75,6 +78,7 @@
               </svg>
             </div>
             <input
+            [readOnly]="enabledPhone"
               type="text"
               id="phone-input"
               aria-describedby="helper-text-explanation"
@@ -84,7 +88,7 @@
               placeholder="123-456-7890"
               required
             />
-            <button type="submit" class="absolute top-0 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+            <button (click)="toggleEnabledPhone()" type="submit" class="absolute top-0 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                 <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.3 4.8 2.9 2.9M7 7H4a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h11c.6 0 1-.4 1-1v-4.5m2.4-10a2 2 0 0 1 0 3l-6.8 6.8L8 14l.7-3.6 6.9-6.8a2 2 0 0 1 2.8 0Z"/>
                   </svg>
@@ -99,6 +103,7 @@
           >
 
           <input
+          [readOnly]="enabledEmail"
             type="email"
             id="email"
             formControlName="email"
@@ -106,13 +111,41 @@
             placeholder="john.doe@company.com"
             required
           />
-          <button type="submit" class="absolute top-7 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+          <button (click)="toggleEnabledEmail()" type="submit" class="absolute top-7 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.3 4.8 2.9 2.9M7 7H4a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h11c.6 0 1-.4 1-1v-4.5m2.4-10a2 2 0 0 1 0 3l-6.8 6.8L8 14l.7-3.6 6.9-6.8a2 2 0 0 1 2.8 0Z"/>
               </svg>
           </button>
         </div>
       </div>
+
+      <div class="">
+        <button (click)="changePassword()" type="button" class="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">Cambiar Contraseña</button>
+
+        @if (enableChangePassword) {
+          <div class="mb-6">
+            <label for="password"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
+            <input type="password" id="password"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="•••••••••" required>
+        </div>
+        <div class="mb-6">
+            <label for="confirm_password"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmar Contraseña</label>
+            <input type="password" id="confirm_password"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="•••••••••" required>
+        </div>
+        }
+        @if (enabledSaveChanges) {
+          <button type="button" (click)="updateUser()"  class="text-white sm:float-right bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Guardar Cambios</button>
+        }
+
+      </div>
+
+     
+      
     <!--  <div class="mb-6">
         <label
           for="countries"
@@ -166,19 +199,19 @@
 -->
     </form>
 
-    <div>
+    <div class="">
       <h3 class="text-left italic text-amber-700 text-3xl m-2 font-bold">
         Motos:
       </h3>
     </div>
 
-    <div class="flex justify-center items-center mt-3">
+    <div class="grid justify-center items-center mt-3 sm:flex">
         @if (mListBike.length) {
             @for (item of mListBike; track item.id) {
                 <div
-                class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                class="max-w-sm bg-white border m-3 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
               >
-                <a href="#">
+                <a (click)="redirection(item.id)" class="cursor-pointer">
                   <img
                     class="rounded-t-lg"
                     src="https://images.pexels.com/photos/4577442/pexels-photo-4577442.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -186,7 +219,7 @@
                   />
                 </a>
                 <div class="p-5">
-                  <a href="#">
+                  <a (click)="redirection(item.id)" class="cursor-pointer">
                     <h5
                       class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
                     >
@@ -200,8 +233,8 @@
                     {{item.licensePlate}}
                   </p>
                   <a
-                    href="#"
-                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    (click)="redirection(item.id)"
+                    class="inline-flex cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Read more
                     <svg

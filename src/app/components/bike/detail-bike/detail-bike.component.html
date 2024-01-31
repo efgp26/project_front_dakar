@@ -1,0 +1,209 @@
+<app-sidebar></app-sidebar>
+<div class="p-4 sm:ml-64">
+  <div
+    class="p-4 h-auto border-2 border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 mt-14"
+  >
+    <div class="m-6">
+      <h1 class="text-left italic text-amber-700 text-5xl m-2 font-bold">
+        Datos de Motocicleta
+      </h1>
+    </div>
+    <form [formGroup]="dataBike">
+      <div class="grid gap-6 mb-6 md:grid-cols-2">
+        <div>
+          <label
+            for="licensePlate"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Placa
+          </label>
+          <input
+            type="text"
+            id="licensePlate"
+            formControlName="licensePlate"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="John"
+            required
+          />
+        </div>
+        <div>
+          <label
+            for="brand"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Marca
+          </label>
+          <input
+            type="text"
+            id="brand"
+            formControlName="brand"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Doe"
+            required
+          />
+        </div>
+        <div>
+          <label
+            for="reference"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Referencia
+          </label>
+          <input
+            type="text"
+            id="reference"
+            formControlName="reference"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Doe"
+            required
+          />
+        </div>
+        <div>
+          <label
+            for="dateModel"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Modelo
+          </label>
+
+          <input
+            type="text"
+            id="dateModel"
+            formControlName="dateModel"
+            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="john.doe@company.com"
+            required
+          />
+        </div>
+        <div>
+          <label
+            for="displacement"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Cilindraje
+          </label>
+
+          <input
+            type="text"
+            id="displacement"
+            formControlName="displacement"
+            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="john.doe@company.com"
+            required
+          />
+        </div>
+        <div>
+          <label
+            for="mileage"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Kilometraje
+          </label>
+
+          <input
+            type="text"
+            id="mileage"
+            formControlName="mileage"
+            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="john.doe@company.com"
+            required
+          />
+        </div>
+        <div>
+          <label
+            for="user"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Dueño
+          </label>
+
+          <input
+            type="text"
+            id="user"
+            formControlName="user"
+            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="john.doe@company.com"
+            required
+          />
+        </div>
+      </div>
+    </form>
+
+    <div class="">
+      <h3 class="text-left italic text-amber-700 text-3xl m-2 font-bold">
+        Motos:
+      </h3>
+    </div>
+
+    <div class="grid justify-center items-center mt-3 sm:flex">
+      @if (mListService.length) { 
+        @for (item of mListService; track item.id) {
+
+            <div
+            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+          >
+            <div class="p-5">
+              <a  class="cursor-pointer">
+                <h5
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                >
+                  😒
+                </h5>
+              </a>
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                👍😒
+              </p>
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                👍
+              </p>
+              <a
+                
+                class="inline-flex cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Read more
+                <svg
+                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+      } }@else {
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300 dark:border-yellow-800"
+        role="alert"
+      >
+        <svg
+          class="flex-shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <span class="font-medium"
+            >La Motocicleta no tiene servicios registrados.</span
+          >
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

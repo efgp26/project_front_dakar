@@ -11,4 +11,5 @@ export interface MBike{
     mileage: string;
     dataCreate: Date;
     userEntity: MUser;
+    
 }
