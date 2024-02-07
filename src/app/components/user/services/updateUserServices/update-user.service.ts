@@ -3,7 +3,7 @@ import { environment } from '../../../../../enviroments/environment';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ResponseEntity } from '../../../../models/ResponseEntity';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { MUser } from '../../../../models/MUser';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class UpdateUserService {
 
   
 
-  PutUpdateUser(MUser: MUser, id: number):Observable<ResponseEntity<1>>{
+  async PutUpdateUser(MUser: MUser, id: number):Promise<Observable<ResponseEntity<1>>>{
 
     let direccion = this.URLLOCAL + "/api/user/udpate/"+id;
     console.log(direccion);
@@ -32,9 +32,15 @@ export class UpdateUserService {
       })
     };
 
-    console.log(httpOptions.headers, this.token)
-
-    return this.http.put<ResponseEntity<1>>(direccion, MUser, httpOptions);
+    try {
+      // Convert the Observable to a Promise and await its resolution
+      return this.http.put<ResponseEntity<1>>(direccion, MUser, httpOptions);
+    
+    } catch (error) {
+      // Handle any errors here
+      console.error('Error updateing user:', error);
+      throw error; // Re-throw the error if needed
+    }
 
   }
 }

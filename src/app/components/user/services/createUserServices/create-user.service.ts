@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { environment } from '../../../../../enviroments/environment';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { ResponseEntity } from '../../../../models/ResponseEntity';
@@ -20,7 +20,7 @@ export class CreateUserService {
 
   
 
-  PostCreateUser(MUser: MUser):Observable<ResponseEntity<1>>{
+  async PostCreateUser(MUser: MUser):Promise<ResponseEntity<1>>{
 
     let direccion = this.URLLOCAL + "/api/user/save";
     console.log(direccion);
@@ -32,9 +32,16 @@ export class CreateUserService {
       })
     };
 
-    console.log(httpOptions.headers, this.token)
-
-    return this.http.post<ResponseEntity<1>>(direccion, MUser, httpOptions);
+    try {
+      // Convert the Observable to a Promise and await its resolution
+      const response$ = this.http.post<ResponseEntity<1>>(direccion, MUser, httpOptions);
+    const response = await firstValueFrom(response$);
+      return response;
+    } catch (error) {
+      // Handle any errors here
+      console.error('Error creating user:', error);
+      throw error; // Re-throw the error if needed
+    }
 
   }
 }

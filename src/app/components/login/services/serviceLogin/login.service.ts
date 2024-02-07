@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { environment } from '../../../../../enviroments/environment';
 import { MResponse } from '../../../../models/MResponse';
 import { MLogin } from '../../../../models/MLogin';
@@ -15,23 +15,22 @@ export class LoginService {
   constructor(private http:HttpClient)
   { }
 
-  Login(Mlogin:MLogin):Observable<MResponse>{
+  async Login(Mlogin:MLogin):Promise<MResponse>{
 
     let direccion = this.URLLOCAL + "/login";
     console.log(direccion);
     console.log(Mlogin);
 
-    return this.http.post<MResponse>(direccion, Mlogin);
-
-  }
-
-  async prueba():Promise<Observable<any>>{
-
-    let direccion = this.URLLOCAL + "/api/user/listAllUsers";
-    console.log(direccion);
-    
-    return this.http.get<any>(direccion);
-
+    try {
+      // Convert the Observable to a Promise and await its resolution
+      const response$ = this.http.post<MResponse>(direccion, Mlogin);
+    const response = await firstValueFrom(response$);
+      return response;
+    } catch (error) {
+      // Handle any errors here
+      console.error('Error deleting bike:', error);
+      throw error; // Re-throw the error if needed
+    }
 
   }
 }

@@ -5,13 +5,16 @@ import { ListUserService } from '../services/listUserServices/list-user.service'
 import { MUser } from '../../../models/MUser';
 import { AllListService } from '../../../services/allListServices/all-list.service';
 import { DeleteUserByIdService } from '../services/deleteUserByIdServices/delete-user-by-id.service';
+import { DeleteElementService } from '../../../services/deleteElements/delete-element.service';
+import { ActivateModalDeleteService } from '../../../services/activateModalDelete/activate-modal-delete.service';
+import { ModalDeleteComponent } from "../../../ux/modal-delete/modal-delete.component";
 
 @Component({
-  selector: 'app-list-user',
-  standalone: true,
-  templateUrl: './list-user.component.html',
-  styleUrl: './list-user.component.css',
-  imports: [SidebarComponent, RouterLink],
+    selector: 'app-list-user',
+    standalone: true,
+    templateUrl: './list-user.component.html',
+    styleUrl: './list-user.component.css',
+    imports: [SidebarComponent, RouterLink, ModalDeleteComponent]
 })
 export class ListUserComponent implements OnInit {
   mListUsers: MUser[] = [];
@@ -20,7 +23,8 @@ export class ListUserComponent implements OnInit {
   constructor(
     private getLists: AllListService,
     private router: Router,
-    private apiDeleteUser: DeleteUserByIdService
+    private apiDeleteUser: DeleteUserByIdService,
+    private activateModalDelete: ActivateModalDeleteService,
   ) {}
 
   listAllUsers() {
@@ -52,11 +56,14 @@ export class ListUserComponent implements OnInit {
   }
 
   async deleteUser(id: number) {
-    (await this.apiDeleteUser.DeleteUserById(id)).subscribe(data => {
-      console.log(data.message);
-      this.listAllUsers();
-    });
+  /*  let data = await this.apiDeleteUser.DeleteUserById(id);
+    console.log(data.message);
+    this.getLists.loadListAllUsers(); */
+
+    let type = "User"
+   this.activateModalDelete.activateModal(id, type);
   }
+  
 
   ngOnInit(): void {
     this.listAllUsers();

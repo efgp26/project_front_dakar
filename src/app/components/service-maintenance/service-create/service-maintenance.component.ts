@@ -28,7 +28,6 @@ declare var Datepicker: any;
   styleUrl: './service-maintenance.component.css',
 })
 export class ServiceMaintenanceComponent implements OnInit {
-
   mListUser: MUser[] = [];
   mService: MSerrvice = {} as MSerrvice;
   listBikes: MBike[] = [];
@@ -51,35 +50,36 @@ export class ServiceMaintenanceComponent implements OnInit {
     mechanic: new FormControl(0, Validators.required),
   });
 
-  listAllBikes() {
-    this.apiListAllBike.GetListBikes().subscribe((data) => {
-      console.log(data.status);
-      let list = data.data as unknown as [];
-      this.listBikes = list;
-    });
+  async listAllBikes() {
+    let data = await this.apiListAllBike.GetListBikes();
+    console.log(data.status);
+    let list = data.data as unknown as [];
+    this.listBikes = list;
   }
 
-  listUserByRoleMechanic() {
-    this.apiListUserByMechanic
-      .GetListUserByRol('MECHANIC')
-      .subscribe((data) => {
-        console.log(data.message);
-        let list = data.data as unknown as [];
-        this.mListUser = list;
-      });
+  async listUserByRoleMechanic() {
+    let data = await this.apiListUserByMechanic.GetListUserByRol('MECHANIC');
+
+    console.log(data.message);
+    let list = data.data as unknown as [];
+    this.mListUser = list;
   }
 
-  createService() {
+   async createService() {
     let mBikeEntity: MBike = {} as MBike;
     let mUserEntity: MUser = {} as MUser;
 
     this.mService.name = this.dataServices.value.name!;
     this.mService.description = this.dataServices.value.description!;
-    this.mService.dateAdmission = new Date(this.dataServices.value.dateAdmission!);
+    this.mService.dateAdmission = new Date(
+      this.dataServices.value.dateAdmission!
+    );
     this.mService.payment = this.dataServices.value.payment!;
     this.mService.valueService = this.dataServices.value.valueService!;
     this.mService.stade = JSON.parse(this.dataServices.value.stade!);
-    this.mService.departureDate = new Date(this.dataServices.value.departureDate!);
+    this.mService.departureDate = new Date(
+      this.dataServices.value.departureDate!
+    );
     mBikeEntity.id = this.dataServices.value.bikeEntity!;
     mUserEntity.id = this.dataServices.value.mechanic!;
     this.mService.bikeEntity = mBikeEntity;
@@ -87,20 +87,19 @@ export class ServiceMaintenanceComponent implements OnInit {
 
     console.log(this.mService);
 
-    this.apiCreateMaintenance.PostCreateMaintenance(this.mService).subscribe( data=>{
-      console.log(data.data);
-    });
+    let data = await this.apiCreateMaintenance
+      .PostCreateMaintenance(this.mService);
+        console.log(data.data);
+      
   }
 
   initDatePicker() {
-    const dateAdmission = document.getElementById("fechaIngreso");
-    const dateDeparture = document.getElementById("fechaSalida");
+    const dateAdmission = document.getElementById('fechaIngreso');
+    const dateDeparture = document.getElementById('fechaSalida');
 
     new Datepicker(dateAdmission, {});
     new Datepicker(dateDeparture, {});
   }
-
-  
 
   onDateChange(event: any, optionDate: string) {
     switch (optionDate) {

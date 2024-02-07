@@ -3,7 +3,7 @@ import { environment } from '../../../../../enviroments/environment';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ResponseEntity } from '../../../../models/ResponseEntity';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class DeleteUserByIdService {
   constructor(private http:HttpClient, private storageService: StorageService)
   { }
 
-  async DeleteUserById(idUser: number):Promise<Observable<ResponseEntity<1>>>{
+  async DeleteUserById(idUser: number):Promise<ResponseEntity<1>>{
 
     let direccion = this.URLLOCAL + "/api/user/delete/" + idUser;
     const token = this.storageService.getItem('token');
@@ -29,7 +29,17 @@ export class DeleteUserByIdService {
       })
     };
 
-    return this.http.delete<ResponseEntity<1>>(direccion, httpOptions);
+    try {
+      // Convert the Observable to a Promise and await its resolution
+      const response$ = this.http.delete<ResponseEntity<1>>(direccion, httpOptions);
+    const response = await firstValueFrom(response$);
+      return response;
+    } catch (error) {
+      // Handle any errors here
+      console.error('Error deleting user:', error);
+      throw error; // Re-throw the error if needed
+    }
+     
 
   }
 }

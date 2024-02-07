@@ -3,7 +3,7 @@ import { environment } from '../../../../../enviroments/environment';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ResponseEntity } from '../../../../models/ResponseEntity';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,15 @@ export class FindBikeByIdService {
       })
     };
 
-    return this.http.get<ResponseEntity<1>>(direccion, httpOptions);
+    try {
+      // Convert the Observable to a Promise and await its resolution
+      return  this.http.get<ResponseEntity<1>>(direccion, httpOptions);
+    
+    } catch (error) {
+      // Handle any errors here
+      console.error('Error deleting bike:', error);
+      throw error; // Re-throw the error if needed
+    }
 
   }
 }

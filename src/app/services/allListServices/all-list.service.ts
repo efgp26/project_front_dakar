@@ -6,33 +6,35 @@ import { Subject } from 'rxjs';
 import { FinUserByIdService } from '../../components/user/services/findUserByIdServices/fin-user-by-id.service';
 import { FindBikeByIdService } from '../../components/bike/services/findBikeByid/find-bike-by-id.service';
 import { FindServicesByIdBikeService } from '../../components/service-maintenance/services/findServicesByIdBike/find-services-by-id-bike.service';
+import { FindServiceByIdService } from '../../components/service-maintenance/services/findServiceById/find-service-by-id.service';
+import { DeleteBikeByIdService } from '../../components/bike/services/deleteBikeById/delete-bike-by-id.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AllListService {
-
   private _listAllUsers$ = new Subject<any>();
   private _userById$ = new Subject<any>();
   private _bikeById$ = new Subject<any>();
   private _findServiceByIdBike$ = new Subject<any>();
+  private _findServiceById$ = new Subject<any>();
+  private _listAllBikes$ = new Subject<any>();
 
   constructor(
-    private apiListAllBike: ListAllBikeService,
     private apiListAllUsers: ListUserService,
-    private apiListUsersByRol: ListUsserByRolService,
     private apiFindUserById: FinUserByIdService,
     private apiFindBikeById: FindBikeByIdService,
-    private apiFindServiceByIdBike: FindServicesByIdBikeService
+    private apiFindServiceByIdBike: FindServicesByIdBikeService,
+    private apiFindServiceById: FindServiceByIdService,
+    private apiListAllBikes: ListAllBikeService
   ) {}
 
-  loadListAllUsers(){
-    this.apiListAllUsers.GetListUser().subscribe(data=>{
-      this._listAllUsers$.next(data.data);
-    });
+  async loadListAllUsers() {
+    let data = await this.apiListAllUsers.GetListUser();
+    this._listAllUsers$.next(data.data);
   }
 
-  get listAllUsers$(){
+  get listAllUsers$() {
     return this._listAllUsers$.asObservable();
   }
 
@@ -42,7 +44,7 @@ export class AllListService {
     });
   }
 
-  get userById$(){
+  get userById$() {
     return this._userById$.asObservable();
   }
 
@@ -52,17 +54,37 @@ export class AllListService {
     });
   }
 
-  get bikeById$(){
+  get bikeById$() {
     return this._bikeById$.asObservable();
   }
 
-  async loadServiceByIdbike(id: number){
-    (await this.apiFindServiceByIdBike.getListServicesByIdBike(id)).subscribe(data=>{
+  async loadServiceByIdbike(id: number) {
+    (await this.apiFindServiceByIdBike.getListServicesByIdBike(id)).subscribe(data =>{
       this._findServiceByIdBike$.next(data.data);
     });
   }
 
-  get serviceByIdBike(){
+  get serviceByIdBike() {
     return this._findServiceByIdBike$.asObservable();
+  }
+
+  async loadServiceById(id: number) {
+    (await this.apiFindServiceById.getServicesById(id)).subscribe(data =>{
+      this._findServiceById$.next(data.data);
+    });
+  }
+
+  get serviceById$() {
+    return this._findServiceById$.asObservable();
+  }
+
+  async loadListAllBikes() {
+    let data = await this.apiListAllBikes.GetListBikes();
+    this._listAllBikes$.next(data.data);
+    console.log(data.data);
+  }
+
+  get listAllBikes$() {
+    return this._listAllBikes$.asObservable();
   }
 }

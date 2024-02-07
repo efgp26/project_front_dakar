@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { environment } from '../../../../../enviroments/environment';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { ResponseEntity } from '../../../../models/ResponseEntity';
@@ -18,7 +18,7 @@ export class CreateMaintenanceService {
   constructor(private http:HttpClient, private storageService: StorageService)
   { }
 
-  PostCreateMaintenance(MSerrvice: MSerrvice):Observable<ResponseEntity<1>>{
+  async PostCreateMaintenance(MSerrvice: MSerrvice):Promise<ResponseEntity<1>>{
 
     let direccion = this.URLLOCAL + "/api/services/save";
     console.log(MSerrvice);
@@ -29,9 +29,16 @@ export class CreateMaintenanceService {
       })
     };
 
-    console.log(httpOptions.headers, this.token)
-
-    return this.http.post<ResponseEntity<1>>(direccion, MSerrvice, httpOptions);
+    try {
+      // Convert the Observable to a Promise and await its resolution
+      const response$ = this.http.post<ResponseEntity<1>>(direccion, MSerrvice, httpOptions);
+    const response = await firstValueFrom(response$);
+      return response;
+    } catch (error) {
+      // Handle any errors here
+      console.error('Error creating service:', error);
+      throw error; // Re-throw the error if needed
+    }
 
   }
 }

@@ -21,12 +21,11 @@ import { UpdateUserService } from '../services/updateUserServices/update-user.se
   imports: [SidebarComponent, ReactiveFormsModule],
 })
 export class DetailUserComponent implements OnInit {
-
-  enableChangePassword:boolean = false;
-  enabledName:boolean = true;
-  enabledLastname:boolean = true;
-  enabledPhone:boolean = true;
-  enabledEmail:boolean = true;
+  enableChangePassword: boolean = false;
+  enabledName: boolean = true;
+  enabledLastname: boolean = true;
+  enabledPhone: boolean = true;
+  enabledEmail: boolean = true;
   enabledSaveChanges: boolean = false;
 
   mListBike: MBike[] = [];
@@ -52,41 +51,44 @@ export class DetailUserComponent implements OnInit {
     });
   }
 
-  //toggles para activar edicion de campos 
+  //toggles para activar edicion de campos
 
-  toggleEnbledName(){
+  toggleEnbledName() {
     this.enabledName = !this.enabledName;
     document.getElementById('first_name')?.focus();
     this.funEnabledSaveChanges();
   }
 
-  toggleEnabledLastname(){
+  toggleEnabledLastname() {
     this.enabledLastname = !this.enabledLastname;
     document.getElementById('last_name')?.focus();
     this.funEnabledSaveChanges();
   }
 
-  toggleEnabledPhone(){
+  toggleEnabledPhone() {
     this.enabledPhone = !this.enabledPhone;
     document.getElementById('phone-input')?.focus();
     this.funEnabledSaveChanges();
   }
 
-  toggleEnabledEmail(){
+  toggleEnabledEmail() {
     this.enabledEmail = !this.enabledEmail;
     document.getElementById('email')?.focus();
     this.funEnabledSaveChanges();
   }
 
-  funEnabledSaveChanges(){
-    this.enabledSaveChanges = !this.enabledName || !this.enabledLastname || !this.enabledPhone || !this.enabledEmail;
+  funEnabledSaveChanges() {
+    this.enabledSaveChanges =
+      !this.enabledName ||
+      !this.enabledLastname ||
+      !this.enabledPhone ||
+      !this.enabledEmail;
   }
 
-  changePassword(){
-    this.enableChangePassword = ! this.enableChangePassword;
+  changePassword() {
+    this.enableChangePassword = !this.enableChangePassword;
   }
 
-  
   // metodo que asigna datos del usuario
   async getUser() {
     await this.getApis.loadUserById(this.idUser);
@@ -99,6 +101,7 @@ export class DetailUserComponent implements OnInit {
 
   //metodo que da los valores a los inputs
   async setDataUser() {
+    console.log(this.mUser);
     this.dataUser.patchValue({
       name: this.mUser.name,
       lastName: this.mUser.lastName,
@@ -108,21 +111,23 @@ export class DetailUserComponent implements OnInit {
     this.mListBike = this.mUser.bikeEntityList;
   }
 
-  // metodo que consume la api de actualizacion 
-  async updateUser(){
+  // metodo que consume la api de actualizacion
+  async updateUser() {
     let mUserUpdate: MUser = {} as MUser;
     mUserUpdate.name = this.dataUser.value.name!;
     mUserUpdate.lastName = this.dataUser.value.lastName!;
     mUserUpdate.numbrePhone = this.dataUser.value.numberPhone!;
     mUserUpdate.email = this.dataUser.value.email!;
+    mUserUpdate.password = this.dataUser.value.email!;
     mUserUpdate.id = this.mUser.id;
- 
+
     console.log(mUserUpdate);
-    this.apiUpdateUser.PutUpdateUser(mUserUpdate, mUserUpdate.id).subscribe(data=>{
-      console.log(data.status);
+    (
+      await this.apiUpdateUser.PutUpdateUser(mUserUpdate, mUserUpdate.id)
+    ).subscribe((data) => {
+      console.log(data);
     });
   }
-
 
   redirection(id: number) {
     console.log(id);

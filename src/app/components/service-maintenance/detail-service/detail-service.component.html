@@ -1,0 +1,252 @@
+<app-sidebar></app-sidebar>
+<div class="p-4 sm:ml-64">
+  <div
+    class="p-4 h-auto border-2 border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 mt-14"
+  >
+    <div class="m-6">
+      <h1 class="text-left italic text-amber-700 text-5xl m-2 font-bold">
+        Datos del Servicio
+      </h1>
+    </div>
+
+    <form [formGroup]="dataServices">
+      <div class="mb-6">
+        <label
+          for="bikeEntity"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Seleccione la placa de la moto
+        </label>
+        <input
+        type="text"
+        id="bikeEntity"
+        formControlName="bikeEntity"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="ABC123"
+        required
+      />
+      
+      </div>
+
+      <!--Fechas-->
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="relative">
+          <label
+            for="fechaIngreso"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Fecha de Ingreso</label
+          >
+          <div class="relative max-w-sm mb-6">
+            <div
+              class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                />
+              </svg>
+            </div>
+            <input
+              [readOnly]="enableDateIn"
+              datepicker
+              datepicker-autohide
+              datepicker-format="yyyy/mm/dd"
+              (blur)="onDateChange($event, 'fechaIngreso')"
+              type="text"
+              id="fechaIngreso"
+              formControlName="dateAdmission"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Select date"
+            />
+            <button (click)="toggleEnableIn()" type="submit" class="absolute top-0 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.3 4.8 2.9 2.9M7 7H4a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h11c.6 0 1-.4 1-1v-4.5m2.4-10a2 2 0 0 1 0 3l-6.8 6.8L8 14l.7-3.6 6.9-6.8a2 2 0 0 1 2.8 0Z"/>
+                </svg>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <label
+            for="fechaSalida"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Fecha de Salida</label
+          >
+          <div class="relative max-w-sm mb-6">
+            <div
+              class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                />
+              </svg>
+            </div>
+            <input
+            [readOnly]="enableDateOut"
+              datepicker
+              datepicker-autohide
+              datepicker-format="yyyy/mm/dd"
+              (blur)="onDateChange($event, 'fechaSalida')"
+              type="text"
+              id="fechaSalida"
+              formControlName="departureDate"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Select date"
+            />
+            <button (click)="toggleEnableOut()" type="submit" class="absolute top-0 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.3 4.8 2.9 2.9M7 7H4a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h11c.6 0 1-.4 1-1v-4.5m2.4-10a2 2 0 0 1 0 3l-6.8 6.8L8 14l.7-3.6 6.9-6.8a2 2 0 0 1 2.8 0Z"/>
+                </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!--Fin Fechas-->
+      <div class="mb-6 relative">
+        <label
+          for="name"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Nombre del Servicio
+        </label>
+        <input
+        [readOnly]="enableName"
+          type="text"
+          id="name"
+          formControlName="name"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Doe"
+          required
+        />
+        <button (click)="toggleEnableName()"  type="submit" class="absolute top-7 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.3 4.8 2.9 2.9M7 7H4a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h11c.6 0 1-.4 1-1v-4.5m2.4-10a2 2 0 0 1 0 3l-6.8 6.8L8 14l.7-3.6 6.9-6.8a2 2 0 0 1 2.8 0Z"/>
+            </svg>
+        </button>
+      </div>
+      <div class="mb-6 relative">
+        <label
+          for="large-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Descripcion
+        </label>
+        <textarea
+        [readOnly]="enableDescription"
+          type="text"
+          id="large-input"
+          rows="5"
+          formControlName="description"
+          class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+        </textarea>
+        <button (click)="toggleEnabledDescription()" type="submit" class="absolute top-7 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.3 4.8 2.9 2.9M7 7H4a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h11c.6 0 1-.4 1-1v-4.5m2.4-10a2 2 0 0 1 0 3l-6.8 6.8L8 14l.7-3.6 6.9-6.8a2 2 0 0 1 2.8 0Z"/>
+            </svg>
+        </button>
+      </div>
+
+      <div class="mb-6 relative">
+        <label
+          for="payment"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Abono
+        </label>
+        <input
+        [readOnly]="enablePayment"
+          type="number"
+          formControlName="payment"
+          id="payment"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="160.000"
+          required
+        />
+        <button (click)="toggleEnabledPayent()" type="submit" class="absolute top-7 end-0 p-2 text-sm  text-black  rounded-e-lg border border-blue-700 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.3 4.8 2.9 2.9M7 7H4a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h11c.6 0 1-.4 1-1v-4.5m2.4-10a2 2 0 0 1 0 3l-6.8 6.8L8 14l.7-3.6 6.9-6.8a2 2 0 0 1 2.8 0Z"/>
+            </svg>
+        </button>
+      </div>
+      <div class="mb-6 relative">
+        <label
+          for="valueService"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Costo del Servicio
+        </label>
+        <input
+        [readOnly]="enableValueService"
+          type="number"
+          id="valueService"
+          formControlName="valueService"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="80.000"
+          required
+        />
+        <button (click)="toggleEnabledValueService()" type="submit" class="absolute top-7 end-0 p-2 text-sm  text-black  rounded-e-lg border border-green-500 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.3 4.8 2.9 2.9M7 7H4a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h11c.6 0 1-.4 1-1v-4.5m2.4-10a2 2 0 0 1 0 3l-6.8 6.8L8 14l.7-3.6 6.9-6.8a2 2 0 0 1 2.8 0Z"/>
+            </svg>
+        </button>
+      </div>
+
+      <div class="mb-6">
+        <label
+          for="stade"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Estado del servicion
+        </label>
+        <select
+          id="stade"
+          formControlName="stade"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+        <option value={{true}} >En proceso</option>
+        <option value={{false}} >Terminado</option>
+        </select>
+      </div>
+
+    <!--  <div class="mb-6">
+        <label
+          for="mechanic"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Mecanico encargado
+        </label>
+        <select
+          id="mechanic"
+          formControlName="mechanic"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          @for (item of mListUser; track item.id) {
+          <option value="{{ item.id }}">{{ item.name +" "+item.lastName}}</option>
+          }
+        </select>
+      </div> -->
+
+      <button
+        type="submit"
+        class="text-white bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+        
+      >
+        Guardar
+      </button>
+    </form>
+  </div>
+</div>

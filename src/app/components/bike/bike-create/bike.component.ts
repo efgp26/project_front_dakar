@@ -44,7 +44,7 @@ export class BikeComponent implements OnInit{
     this.listAllUsers();
   }
 
-  createBike(){
+  async createBike(){
     this.mBike.licensePlate = this.dataBike.value.licensePlate!;
     this.mBike.displacement = this.dataBike.value.displacement!;
     this.mBike.dateModel = this.dataBike.value.dateModel!;
@@ -53,12 +53,10 @@ export class BikeComponent implements OnInit{
     this.mBike.mileage = this.dataBike.value.mileage!;
     this.mUser.id = Number(this.dataBike.value.user!);
     this.mBike.userEntity = this.mUser;
-    console.log(this.mBike)
+    console.log(this.mBike);
 
-    this.apiCreateBike.PostCreateBike(this.mBike).subscribe(data => {
-      console.log(data.data);
-    });
-
+    let response = await this.apiCreateBike.PostCreateBike(this.mBike);
+    console.log(response);
   }
 
 

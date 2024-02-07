@@ -32,7 +32,7 @@ export class LoginComponent {
   async login(){
     this.mLogin.username = this.datosLogin.value.email!;
     this.mLogin.password = this.datosLogin.value.password!;
-    this.serviceLogin.Login(this.mLogin).subscribe(data=>{
+    let data = await this.serviceLogin.Login(this.mLogin)
       console.log(data)
       if(data.Message == "Autenticacion Correcta"){
         this.storageService.setItem("token", data.token)
@@ -41,7 +41,7 @@ export class LoginComponent {
         console.log(prueba);
         this.router.navigate(['create-user']);
       }
-    })
+    
   }
 
 }

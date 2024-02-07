@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { environment } from '../../../../../enviroments/environment';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { ResponseEntity } from '../../../../models/ResponseEntity';
@@ -19,7 +19,7 @@ export class CreateBikeService {
   constructor(private http:HttpClient, private storageService: StorageService)
   { }
 
-  PostCreateBike(MUser: MBike):Observable<ResponseEntity<1>>{
+  async PostCreateBike(MUser: MBike):Promise<ResponseEntity<1>>{
 
     let direccion = this.URLLOCAL + "/api/bike/save";
     console.log(direccion);
@@ -31,9 +31,16 @@ export class CreateBikeService {
       })
     };
 
-    console.log(this.token)
-
-    return this.http.post<ResponseEntity<1>>(direccion, MUser, httpOptions);
+    try {
+      // Convert the Observable to a Promise and await its resolution
+      const response$ = this.http.post<ResponseEntity<1>>(direccion, MUser, httpOptions);
+    const response = await firstValueFrom(response$);
+      return response;
+    } catch (error) {
+      // Handle any errors here
+      console.error('Error saving bike:', error);
+      throw error; // Re-throw the error if needed
+    }
 
   }
 }

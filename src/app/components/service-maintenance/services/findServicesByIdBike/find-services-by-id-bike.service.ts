@@ -3,7 +3,7 @@ import { environment } from '../../../../../enviroments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { ResponseEntity } from '../../../../models/ResponseEntity';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { MSerrvice } from '../../../../models/MService';
 
 @Injectable({
@@ -28,7 +28,15 @@ export class FindServicesByIdBikeService {
       })
     };
 
-    return this.http.get<ResponseEntity<1>>(direccion,  httpOptions);
+    try {
+      // Convert the Observable to a Promise and await its resolution
+      return this.http.get<ResponseEntity<1>>(direccion,  httpOptions);
+    
+    } catch (error) {
+      // Handle any errors here
+      console.error('Error finding service by id bike:', error);
+      throw error; // Re-throw the error if needed
+    }
 
   }
 }

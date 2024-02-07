@@ -7,6 +7,9 @@ import { HomeComponent } from './ux/home/home.component';
 import { ListUserComponent } from './components/user/list-user/list-user.component';
 import { DetailUserComponent } from './components/user/detail-user/detail-user.component';
 import { DetailBikeComponent } from './components/bike/detail-bike/detail-bike.component';
+import { DetailServiceComponent } from './components/service-maintenance/detail-service/detail-service.component';
+import { ListBikesComponent } from './components/bike/list-bikes/list-bikes.component';
+import { ModalDeleteComponent } from './ux/modal-delete/modal-delete.component';
 
 export const routes: Routes = [
     { path: 'create-user', component: CreateUserComponent},
@@ -17,5 +20,8 @@ export const routes: Routes = [
     { path: 'list-user', component: ListUserComponent},
     { path: 'detail-user/:id', component: DetailUserComponent},
     { path: 'detail-bike/:id', component: DetailBikeComponent},
+    { path: 'detail-service/:id', component: DetailServiceComponent},
+    { path: 'list-bike', component: ListBikesComponent},
+    { path: 'modal', component: ModalDeleteComponent},
     
 ];
