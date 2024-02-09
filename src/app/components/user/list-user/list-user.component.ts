@@ -8,6 +8,7 @@ import { DeleteUserByIdService } from '../services/deleteUserByIdServices/delete
 import { DeleteElementService } from '../../../services/deleteElements/delete-element.service';
 import { ActivateModalDeleteService } from '../../../services/activateModalDelete/activate-modal-delete.service';
 import { ModalDeleteComponent } from "../../../ux/modal-delete/modal-delete.component";
+import { PaginationService } from '../../../services/paginationService/pagination.service';
 
 @Component({
     selector: 'app-list-user',
@@ -17,6 +18,14 @@ import { ModalDeleteComponent } from "../../../ux/modal-delete/modal-delete.comp
     imports: [SidebarComponent, RouterLink, ModalDeleteComponent]
 })
 export class ListUserComponent implements OnInit {
+
+  currentPage = 1;
+  totalPages: number = 0;
+  itemsPerPage = 5;
+  startPage: number = 1;
+  endPage: number = 2;
+  paginatedData: MUser[] = [];
+
   mListUsers: MUser[] = [];
   mListUsersPersist: MUser[] = [];
 
@@ -25,6 +34,7 @@ export class ListUserComponent implements OnInit {
     private router: Router,
     private apiDeleteUser: DeleteUserByIdService,
     private activateModalDelete: ActivateModalDeleteService,
+    private paginationService: PaginationService,
   ) {}
 
   listAllUsers() {
@@ -32,8 +42,27 @@ export class ListUserComponent implements OnInit {
     this.getLists.listAllUsers$.subscribe((data) => {
       this.mListUsersPersist = data;
       this.mListUsers = this.mListUsersPersist;
+      this.updatePaginatedData();
     });
   }
+
+  updatePaginatedData() {
+    this.totalPages = this.mListUsers.length / this.itemsPerPage;
+    [this.paginatedData, this.startPage, this.endPage] =
+      this.paginationService.updatePaginatedData(
+        this.mListUsers,
+        this.currentPage
+      );
+  }
+
+  onPageChange(page: number) {
+    this.currentPage = this.paginationService.onPageChange(
+      page,
+      this.totalPages
+    );
+    this.updatePaginatedData();
+  }
+
 
   filter(event: any) {
     event = event.target.value;
@@ -46,6 +75,7 @@ export class ListUserComponent implements OnInit {
           user.email.toLowerCase().includes(searchTerm) ||
           user.lastName.toLowerCase().includes(searchTerm)
       );
+      this.updatePaginatedData();
       console.log(this.mListUsers);
     }
   }
@@ -56,10 +86,6 @@ export class ListUserComponent implements OnInit {
   }
 
   async deleteUser(id: number) {
-  /*  let data = await this.apiDeleteUser.DeleteUserById(id);
-    console.log(data.message);
-    this.getLists.loadListAllUsers(); */
-
     let type = "User"
    this.activateModalDelete.activateModal(id, type);
   }

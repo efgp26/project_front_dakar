@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { DeleteBikeByIdService } from '../services/deleteBikeById/delete-bike-by-id.service';
 import { ModalDeleteComponent } from "../../../ux/modal-delete/modal-delete.component";
 import { ActivateModalDeleteService } from '../../../services/activateModalDelete/activate-modal-delete.service';
+import { PaginationService } from '../../../services/paginationService/pagination.service';
 
 @Component({
     selector: 'app-list-bikes',
@@ -17,6 +18,13 @@ import { ActivateModalDeleteService } from '../../../services/activateModalDelet
 })
 export class ListBikesComponent {
 
+  currentPage = 1;
+  totalPages: number = 0;
+  itemsPerPage = 5;
+  startPage: number = 1;
+  endPage: number = 2;
+  paginatedData: MBike[] = [];
+
   mListBikes: MBike[]= [];
   mListBikesPersist: MBike[]= [];
 
@@ -25,7 +33,8 @@ export class ListBikesComponent {
     private apiDeleteBikeById: DeleteBikeByIdService,
     private router: Router,
     private renderer: Renderer2, private el: ElementRef,
-    private activateModalDelete: ActivateModalDeleteService
+    private activateModalDelete: ActivateModalDeleteService,
+    private paginationService: PaginationService,
   ){}
 
   getBikes(){
@@ -34,8 +43,27 @@ export class ListBikesComponent {
     this.allListService.listAllBikes$.subscribe(data=>{
       this.mListBikesPersist = data;
       this.mListBikes = data;
+      this.updatePaginatedData();
     });
   }
+
+  updatePaginatedData() {
+    this.totalPages = this.mListBikes.length / this.itemsPerPage;
+    [this.paginatedData, this.startPage, this.endPage] =
+      this.paginationService.updatePaginatedData(
+        this.mListBikes,
+        this.currentPage
+      );
+  }
+
+  onPageChange(page: number) {
+    this.currentPage = this.paginationService.onPageChange(
+      page,
+      this.totalPages
+    );
+    this.updatePaginatedData();
+  }
+
 
   filter(event: any) {
     event = event.target.value;
@@ -46,6 +74,7 @@ export class ListBikesComponent {
         (bike) =>
           bike.licensePlate.toLowerCase().includes(searchTerm)        
       );
+      this.updatePaginatedData();
     }
   }
 

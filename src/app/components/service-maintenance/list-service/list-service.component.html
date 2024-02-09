@@ -47,7 +47,7 @@
     
 
     @if (mListServices.length) {
-        @for (item of mListBikes; track item.id) {
+        @for (item of paginatedData; track item.id) {
             <li class="pb-3 sm:pb-4">
                 <div class="grid items-center space-x-4 rtl:space-x-reverse md:flex ">
                   <div class="flex justify-end items-center mt-1 md:flex-shrink-0 ">
@@ -61,17 +61,26 @@
                     <p
                       class="text-sm font-medium text-gray-900 truncate dark:text-white"
                     >
-                      {{item.licensePlate}}
+                      {{item.name}}
                     </p>
                     <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                      {{item.brand}}
+                      {{item.bikeEntity.licensePlate}}
                     </p>
                     <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                        {{item.reference}}
+                        {{item.dateAdmission+ " - " +item.departureDate}}
                       </p>
-                      <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                        {{item.dateModel}}
-                      </p>
+                      
+                        @if (item.stade) {
+                            <p class="text-sm text-gray-500 truncate dark:text-gray-400"> 
+                                En proceso
+                            </p>  
+                        }
+                        @else {
+                            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                Terminado
+                            </p>
+                        }
+                      
                   </div>
                   <div
                     class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
@@ -84,7 +93,7 @@
               
               <button
                 class="text-white  bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-                (click)="deleteBike(item.id)">
+                (click)="deleteService(item.id)">
                 Eliminar
               </button>
                   </div>
@@ -120,4 +129,18 @@
 
     
   </ul>
+  <div class="flex flex-col items-center">
+    <!-- Help text -->
+    <span class="text-sm text-gray-700 dark:text-gray-400">
+        Showing <span class="font-semibold text-gray-900 dark:text-white">{{startPage}}</span> to <span class="font-semibold text-gray-900 dark:text-white">{{endPage}}</span> of <span class="font-semibold text-gray-900 dark:text-white">{{mListServices.length}}</span> Entries
+    </span>
+    <!-- Buttons -->
+    <div class="inline-flex mt-2 xs:mt-0">
+        <button (click)="onPageChange(currentPage - 1)" class="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            Prev
+        </button>
+        <button (click)="onPageChange(currentPage + 1)" class="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            Next
+        </button>
+    </div>
 </div>

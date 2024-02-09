@@ -1,51 +1,42 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../../enviroments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MResponse } from '../../../../models/MResponse';
 import { StorageService } from '../../../../services/storage/storage.service';
-import { firstValueFrom } from 'rxjs';
 import { ResponseEntity } from '../../../../models/ResponseEntity';
-import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceLogoutService {
+export class DeleteServiceByIdService {
 
   private URLLOCAL = environment.urlApiLocal;
-  
-  constructor(private http:HttpClient, private storageService: StorageService, private router: Router)
+
+  constructor(private http:HttpClient, private storageService: StorageService)
   { }
 
-  async Logout():Promise<ResponseEntity<1>>{
-
-    let direccion = this.URLLOCAL + "/logout";
-    console.log(direccion);
+  async DeleteServicesById(id: number): Promise<ResponseEntity<1>> {
+    let direccion = this.URLLOCAL + "/api/services/delete/" + id;
     const token = this.storageService.getItem('token');
-
-    console.log(token)
+  
+    console.log(token);
     console.log(direccion);
-
+  
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${token}`
       })
     };
-
+  
     try {
       // Convert the Observable to a Promise and await its resolution
-      const response$ = this.http.post<ResponseEntity<1>>(direccion,null,httpOptions);
+      const response$ = this.http.delete<ResponseEntity<1>>(direccion, httpOptions);
     const response = await firstValueFrom(response$);
-    console.log(response);
-    if(response == null){
-      this.router.navigate(['/login']);
-    }
       return response;
     } catch (error) {
       // Handle any errors here
-      console.error('Error logout:', error);
+      console.error('Error deleting bike:', error);
       throw error; // Re-throw the error if needed
     }
-
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DeleteUserByIdService } from '../../components/user/services/deleteUserByIdServices/delete-user-by-id.service';
 import { DeleteBikeByIdService } from '../../components/bike/services/deleteBikeById/delete-bike-by-id.service';
+import { DeleteServiceByIdService } from '../../components/service-maintenance/services/deleteServiceById/delete-service-by-id.service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,8 @@ import { DeleteBikeByIdService } from '../../components/bike/services/deleteBike
 export class DeleteElementService {
   constructor(
     private apiDeleteUser: DeleteUserByIdService,
-    private apiDeleteBike: DeleteBikeByIdService
+    private apiDeleteBike: DeleteBikeByIdService,
+    private apiDeleteService: DeleteServiceByIdService,
   ) {}
 
   async deleteUser(id: number): Promise<any> {
@@ -18,6 +20,11 @@ export class DeleteElementService {
 
   async deleteBike(id: number): Promise<any> {
     let data = await this.apiDeleteBike.DeleteBikeById(id);
+    return data.success;
+  }
+
+  async deleteService(id: number): Promise<any> {
+    let data = await this.apiDeleteService.DeleteServicesById(id);
     return data.success;
   }
 }

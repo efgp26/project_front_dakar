@@ -32,20 +32,17 @@ export class ModalDeleteComponent implements OnInit {
     if(type == "Bike"){
       let prueba = (await this.apiDelete.deleteBike(this.iDeleteModal.id));
       console.log(prueba);
-      
       this.allListService.loadListAllBikes();
-      
-      
     }
     else if(type == "User"){
       (await this.apiDelete.deleteUser(this.iDeleteModal.id));
       this.allListService.loadListAllUsers();
     }
     else if(type == "Service"){
-      console.log("eliminando servicio")
+      (await this.apiDelete.deleteService(this.iDeleteModal.id));
+      this.allListService.loadListAllServices();
     }
     this.activateModal.deactivateModal();
-    
   }
 
   ngOnInit(): void {
