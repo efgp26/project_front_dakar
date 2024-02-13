@@ -9,6 +9,7 @@ import { FindServicesByIdBikeService } from '../../components/service-maintenanc
 import { FindServiceByIdService } from '../../components/service-maintenance/services/findServiceById/find-service-by-id.service';
 import { DeleteBikeByIdService } from '../../components/bike/services/deleteBikeById/delete-bike-by-id.service';
 import { ListAllMaintenanceService } from '../../components/service-maintenance/services/listAllMaintenance/list-all-maintenance.service';
+import { ListTypeService } from '../../components/type-service/serivces/listTypeServices/list-type.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,7 @@ export class AllListService {
   private _findServiceById$ = new Subject<any>();
   private _listAllBikes$ = new Subject<any>();
   private _listAllServices$ = new Subject<any>();
+  private _listAllTypeServices$ = new Subject<any>();
 
   constructor(
     private apiListAllUsers: ListUserService,
@@ -29,7 +31,8 @@ export class AllListService {
     private apiFindServiceByIdBike: FindServicesByIdBikeService,
     private apiFindServiceById: FindServiceByIdService,
     private apiListAllBikes: ListAllBikeService,
-    private apiListAllServices: ListAllMaintenanceService
+    private apiListAllServices: ListAllMaintenanceService,
+    private apiListAllTypeServices: ListTypeService
   ) {}
 
   async loadListAllUsers() {
@@ -98,5 +101,14 @@ export class AllListService {
 
   get listAllServices$() {
     return this._listAllServices$.asObservable();
+  }
+
+  async loadListAllTypeServices() {
+    let data = await this.apiListAllTypeServices.GetListBikes();
+    this._listAllTypeServices$.next(data.data);
+  }
+
+  get listAllTypeServices$() {
+    return this._listAllTypeServices$.asObservable();
   }
 }

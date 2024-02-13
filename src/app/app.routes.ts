@@ -11,6 +11,7 @@ import { DetailServiceComponent } from './components/service-maintenance/detail-
 import { ListBikesComponent } from './components/bike/list-bikes/list-bikes.component';
 import { ModalDeleteComponent } from './ux/modal-delete/modal-delete.component';
 import { ListServiceComponent } from './components/service-maintenance/list-service/list-service.component';
+import { TypeServiceComponent } from './components/type-service/type-service.component';
 
 export const routes: Routes = [
     { path: 'create-user', component: CreateUserComponent},
@@ -25,4 +26,6 @@ export const routes: Routes = [
     { path: 'list-bike', component: ListBikesComponent},
     { path: 'modal', component: ModalDeleteComponent},
     { path: 'list-service', component: ListServiceComponent},
+    { path: 'type-service', component: TypeServiceComponent},
+    
 ];

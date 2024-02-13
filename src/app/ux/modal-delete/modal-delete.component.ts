@@ -42,6 +42,10 @@ export class ModalDeleteComponent implements OnInit {
       (await this.apiDelete.deleteService(this.iDeleteModal.id));
       this.allListService.loadListAllServices();
     }
+    else if(type == "TypeService"){
+      (await this.apiDelete.deleteMaintenance(this.iDeleteModal.id));
+      this.allListService.loadListAllTypeServices();
+    }
     this.activateModal.deactivateModal();
   }
 
